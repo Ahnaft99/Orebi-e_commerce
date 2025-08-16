@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from 'react'
 import Container from './Container'
-import ad5 from '../assets/ad5.png'
+
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaCartPlus, FaHeart } from 'react-icons/fa'
-import { IoIosGitCompare } from 'react-icons/io'
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +10,7 @@ import { IoGitCompareOutline } from 'react-icons/io5'
 import { ApiData } from './ContextApi'
 
 const NewArrival = () => {
-    let data = useContext(ApiData)
+    let {info, loading} = useContext(ApiData)
     const sliderRef = useRef(null)
 
     const settings = {
@@ -20,7 +20,16 @@ const NewArrival = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
         arrows: false,
+    
 
+    }
+    if(loading){
+        return (
+            <>
+            <h1>Loading.....</h1>
+            </>
+            
+        )
     }
 
     return (
@@ -47,22 +56,27 @@ const NewArrival = () => {
                 </button>
 
                 <Slider ref={sliderRef} {...settings}>
-                    {data.map((item)=>(
+                    {info.map((item)=>(
                       <div className='px-3'>
                       <div className='relative group'>
                           <img src={item.thumbnail} alt="" className='w-full' />
 
-                          <div className='absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
-                              <p className='flex items-center gap-2 cursor-pointer'>Add to Wish List <FaHeart /></p>
-                              <p className='flex items-center gap-2 cursor-pointer'>Compare <IoGitCompareOutline /></p>
-                              <p className='flex items-center gap-2 cursor-pointer'>Add to Cart <FaCartPlus /></p>
+                          <div className='absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-white w-full'>
+                              <p className='flex items-center gap-2 cursor-pointer hover:font-bold'>Add to Wish List <FaHeart /></p>
+                              <p className='flex items-center gap-2 cursor-pointer hover:font-bold'>Compare <IoGitCompareOutline /></p>
+                              <p className='flex items-center gap-2 cursor-pointer hover:font-bold'>Add to Cart <FaCartPlus /></p>
+                          </div>
+                          <div className='absolute left-0 top-0 bg-[#262626]'> 
+                            <p className='text-[#fff] text-[14px] font-dm px-1'>%{item.discountPercentage}</p>
                           </div>
                       </div>
 
                       <div className='flex gap-2'>
-                          <h3>{item.title}</h3>
-                          <p>{item.price}</p>
+                          <h3 className='font-bold text-[20px]'>{item.title}</h3>
+                          <p className='font-bold text-[18px] '>${item.price}</p>
+
                       </div>
+                    
                   </div>
                     ))}
                   
