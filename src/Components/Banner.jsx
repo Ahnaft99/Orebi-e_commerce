@@ -9,28 +9,29 @@ const Banner = () => {
     dots: true,
     infinite: true,
     arrows: false,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000, 
     cssEase: "linear",
 
     appendDots: dots => (
       <div
         style={{
           position: "absolute",
-          top: "40%",        
-          left: "10%",        
+          top: "50%",
+          left: "5%",
+          transform: "translateY(-50%)",
         }}
+        className="hidden sm:block" 
       >
         <ul
           style={{
             margin: 0,
             display: "flex",
-            flexDirection: "column", 
-            gap: "12px",
+            flexDirection: "column",
+            gap: "10px",
           }}
         >
           {dots}
@@ -41,34 +42,53 @@ const Banner = () => {
     customPaging: i => (
       <div
         style={{
-          width: "30px",
+          width: "25px",
           textAlign: "left",
-          color: "#fff",          
+          color: "#fff",
           fontWeight: "bold",
-          fontSize: "16px",
-          borderRight: "3px solid #fff",
-          padding: "5px 0",
+          fontSize: "14px",
+          borderRight: "2px solid #fff",
+          padding: "4px 0",
         }}
+        className="sm:w-[30px] sm:text-[16px] sm:border-r-[3px]"
       >
         0{i + 1}
       </div>
     ),
   }
 
+  const bannerHeight = "h-[180px] sm:h-[280px] md:h-[360px] lg:h-[450px] xl:h-[500px]"
+
   return (
     <div className="w-full relative overflow-hidden">
       <Slider {...settings}>
         <div>
-          <img src={bannerImg} alt="Banner 1" className="w-full" />
+          <img
+            src={bannerImg}
+            alt="Banner 1"
+            className={`w-full ${bannerHeight} object-cover`}
+          />
         </div>
         <div>
-          <img src={bannerImg} alt="Banner 2" className="w-full" />
+          <img
+            src={bannerImg}
+            alt="Banner 2"
+            className={`w-full ${bannerHeight} object-cover`}
+          />
         </div>
         <div>
-          <img src={bannerImg} alt="Banner 3" className="w-full" />
+          <img
+            src={bannerImg}
+            alt="Banner 3"
+            className={`w-full ${bannerHeight} object-cover`}
+          />
         </div>
         <div>
-          <img src={bannerImg} alt="Banner 4" className="w-full" />
+          <img
+            src={bannerImg}
+            alt="Banner 4"
+            className={`w-full ${bannerHeight} object-cover`}
+          />
         </div>
       </Slider>
     </div>

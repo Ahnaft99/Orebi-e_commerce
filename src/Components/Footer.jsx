@@ -3,65 +3,63 @@ import logoF from '../assets/logo.png'
 
 const Footer = () => {
   return (
-    <>
-    <div className="lg:py-[45px] py-[20px] bg-[#F5F5F3]">
-      <div className="lg:w-10/12 w-11/12 mx-auto">
-        <div className="lg:flex flex flex-wrap">
-              <div className="lg:w-2/12 w-2/10">
-                  <div className="">
-                      <h2 className="text-[#262626] text-[16px] font-dm font-bold">MENU</h2>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[18px] pt-2">Home</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Shop</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">About</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Contact</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Journal</p>
-                  </div>
-              </div>
-              <div className="lg:w-2/12 w-2/10">
-                  <div className="">
-                      <h2 className="text-[#262626] text-[16px] font-dm font-bold">SHOP</h2>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[18px] pt-2">Category 1</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Category 2</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Category 3</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Category 4</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Category 5</p>
-                  </div>
-              </div>
-              <div className="lg:w-2/12 w-3/10">
-                  <div className="">
-                      <h2 className="text-[#262626] text-[16px] font-dm font-bold">HELP</h2>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[18px] pt-2">Privacy Policy</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Terms & Conditions</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Special E-shop</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Shipping</p>
-                      <p className="text-[#6D6D6D] text-[14px] font-dm font-normal lg:pt-[10px] pt-[5px]">Secure Payments</p>
-                  </div>
-              </div>
-              <div className="lg:w-3/12 lg:pt-0 pt-4">
-                   <div className="">
-                      <p className="text-[#262626] lg:text-[16px] font-dm lg:font-bold">(052) 611-5711</p>
-                      <p className="text-[#262626] lg:text-[16px] font-dm lg:font-bold">company@domain.com</p>
-                   </div>
-              </div>
-              <div className="lg:w-3/12 lg:mt-0 mt-4 lg:pl-0 pl-10">
-                <div className="">
-                  <img src={logoF} alt="" />
-                </div>
-              </div>
+    <div className="py-5 lg:py-[45px] bg-[#F5F5F3]">
+      <div className="w-11/12 lg:w-10/12 mx-auto">
+        <div className="flex flex-wrap gap-6 lg:gap-0">
+
+          <div className="w-1/2 sm:w-1/4 lg:w-2/12">
+            <h2 className="text-[#262626] text-[16px] font-dm font-bold cursor-pointer">MENU</h2>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-2 lg:pt-[18px] cursor-pointer">Home</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Shop</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">About</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Contact</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Journal</p>
+          </div>
+
+
+          <div className="w-1/2 sm:w-1/4 lg:w-2/12">
+            <h2 className="text-[#262626] text-[16px] font-dm font-bold cursor-pointer">SHOP</h2>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-2 lg:pt-[18px] cursor-pointer">Category 1</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Category 2</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Category 3</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Category 4</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Category 5</p>
+          </div>
+
+
+          <div className="w-1/2 sm:w-1/4 lg:w-2/12">
+            <h2 className="text-[#262626] text-[16px] font-dm font-bold cursor-pointer">HELP</h2>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-2 lg:pt-[18px] cursor-pointer">Privacy Policy</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Terms & Conditions</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Special E-shop</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Shipping</p>
+            <p className="text-[#6D6D6D] text-[14px] font-dm font-normal pt-[5px] lg:pt-[10px] cursor-pointer">Secure Payments</p>
+          </div>
+
+
+          <div className="w-1/2 sm:w-1/2 lg:w-3/12 flex flex-col gap-2 lg:gap-0">
+            <p className="text-[#262626] text-[14px] lg:text-[16px] font-dm font-bold">(052) 611-5711</p>
+            <p className="text-[#262626] text-[14px] lg:text-[16px] font-dm font-bold">company@domain.com</p>
+          </div>
+
+ 
+          <div className="w-1/2 sm:w-1/2 lg:w-3/12 flex justify-center lg:justify-end">
+            <img src={logoF} alt="Logo" className="h-12 sm:h-14 md:h-16 lg:h-20 object-contain"/>
+          </div>
         </div>
-        <div className="flex justify-between lg:mt-[40px] mt-5">
+
+        <div className="flex flex-col sm:flex-row justify-between items-center lg:mt-[40px] mt-5 gap-3 sm:gap-0">
           <div className="flex items-center gap-x-3">
-            <FaFacebookF />
-            <FaLinkedinIn />
-            <FaInstagram />
+            <FaFacebookF className='cursor-pointer'/>
+            <FaLinkedinIn className='cursor-pointer'/>
+            <FaInstagram className='cursor-pointer'/>
           </div>
-          <div className="">
-              <p className='text-[#6D6D6D] lg:text-[14px] text-[12px] font-dm font-normal'>2020 Orebi Minimal eCommerce Figma Template by Adveits</p>
-          </div>
+          <p className='text-[#6D6D6D] text-[12px] sm:text-[14px] font-dm font-normal text-center sm:text-right'>
+            2020 Orebi Minimal eCommerce Figma Template by Adveits
+          </p>
         </div>
       </div>
     </div>
-  </>
   )
 }
 
