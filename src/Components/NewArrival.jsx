@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoGitCompareOutline } from 'react-icons/io5'
 import { ApiData } from './ContextApi'
+import { Link } from 'react-router-dom';
 
 const NewArrival = () => {
     let { info, loading } = useContext(ApiData)
@@ -15,24 +16,28 @@ const NewArrival = () => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4, // default for desktop
+        slidesToShow: 4, 
         slidesToScroll: 1,
         arrows: false,
         responsive: [
+           
             {
-                breakpoint: 1024, // tablets
-                settings: { slidesToShow: 3 }
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
             },
             {
-                breakpoint: 768, // mobile landscape
-                settings: { slidesToShow: 2 }
-            },
-            {
-                breakpoint: 480, // mobile portrait
-                settings: { slidesToShow: 1 }
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
             }
-        ]
-    }
+          ]
+        };
 
     if (loading) {
         return <h1>Loading.....</h1>
@@ -56,12 +61,13 @@ const NewArrival = () => {
                 >
                     <FaArrowAltCircleRight />
                 </button>
-
+                
                 <Slider ref={sliderRef} {...settings}>
                     {info.map((item) => (
                         <div className='px-2 sm:px-3' key={item.id}>
                             <div className='relative group'>
-                                <img src={item.thumbnail} alt={item.title} className='w-full h-[180px] sm:h-[220px] md:h-[250px] lg:h-[280px] object-cover' />
+                            <Link to={"/Shop"}>
+                                <img src={item.thumbnail} alt={item.title} className='w-full h-[180px] sm:h-[220px] md:h-[250px] lg:h-[280px] object-cover' /> </Link>
 
   
                                 <div className='absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-white w-full p-2 flex flex-col gap-1'>
@@ -84,6 +90,8 @@ const NewArrival = () => {
                         </div>
                     ))}
                 </Slider>
+               
+               
             </Container>
         </div>
     )

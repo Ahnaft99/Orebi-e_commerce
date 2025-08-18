@@ -44,7 +44,7 @@ const Footer = () => {
 
  
           <div className="w-1/2 sm:w-1/2 lg:w-3/12 flex justify-center lg:justify-end">
-            <img src={logoF} alt="Logo" className="h-12 sm:h-14 md:h-16 lg:h-20 object-contain"/>
+            <img src={logoF} alt="Logo" className="h-5 mr-[100px] "/>
           </div>
         </div>
 
