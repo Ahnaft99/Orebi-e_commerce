@@ -1,6 +1,6 @@
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import logo from '../assets/logo.png'
+import logo from '../assets/Logo.png'
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
