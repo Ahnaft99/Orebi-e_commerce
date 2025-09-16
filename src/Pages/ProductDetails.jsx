@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from '../Components/Container'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { FaStar } from 'react-icons/fa'
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -43,7 +44,7 @@ const ProductDetails = () => {
             <p className="text-gray-500 mb-4">{product.brand}</p>
 
             {/* Price */}
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl font-bold text-red-500">${product.price}</span>
               <span className="line-through text-gray-400">
                 ${(product.price * 1.5).toFixed(2)}
@@ -51,6 +52,21 @@ const ProductDetails = () => {
               <span className="text-green-600 font-medium">
                 {product.discountPercentage}% OFF
               </span>
+            </div>
+
+            {/* ✅ Rating (added after price) */}
+            <div className="flex items-center gap-1 mb-4">
+              {Array.from({ length: 5 }, (_, i) => (
+                <FaStar
+                  key={i}
+                  className={`${
+                    i < Math.round(product.rating)
+                      ? "text-yellow-500"
+                      : "text-gray-300"
+                  }`}
+                />
+              ))}
+              <span className="ml-2 text-gray-600">({product.rating})</span>
             </div>
 
             {/* Colors */}
