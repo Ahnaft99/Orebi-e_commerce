@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import { FaAngleDown } from 'react-icons/fa'
-import { AiOutlineBars } from 'react-icons/ai'
+import { AiOutlineBars, AiOutlineAppstore } from 'react-icons/ai'
+
 import { ApiData } from './ContextApi'
 import Post from './Post'
 import Pagienation from './Pagienation'
@@ -9,10 +10,12 @@ import Pagienation from './Pagienation'
 const ProductDisplay = () => {
   const { info } = useContext(ApiData)
   const categoryRef = useRef()
-  const [catshow, setcatShow] = useState(false)
+
+  const [catshow, setCatShow] = useState(false)
   const [perPage, setPerPage] = useState(6)
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [active, setActive] = useState("grid") // for view toggle
 
   // Filter items by selected category
   const filteredInfo = selectedCategory
@@ -30,29 +33,27 @@ const ProductDisplay = () => {
 
   // Handle outside click for category dropdown
   useEffect(() => {
-    const handleClick = (e) => {
-      if (categoryRef.current?.contains(e.target)) {
-        setcatShow(!catshow)
-      } else {
-        setcatShow(false)
+    const handleClickOutside = (e) => {
+      if (categoryRef.current && !categoryRef.current.contains(e.target)) {
+        setCatShow(false)
       }
     }
-    document.addEventListener('click', handleClick)
-    return () => document.removeEventListener('click', handleClick)
-  }, [catshow])
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
 
   // Handle category click
   const handleCategoryClick = (cat) => {
     setSelectedCategory(cat)
     setCurrentPage(1)
-    setcatShow(false)
+    setCatShow(false)
   }
 
   // Handle "All" categories click
   const handleAllClick = () => {
     setSelectedCategory(null)
     setCurrentPage(1)
-    setcatShow(false)
+    setCatShow(false)
   }
 
   return (
@@ -64,21 +65,21 @@ const ProductDisplay = () => {
           <div className='w-3/12'>
             <h1
               ref={categoryRef}
+              onClick={() => setCatShow(!catshow)}
               className='cursor-pointer text-[20px] font-dm font-bold'
             >
               Shop By Category
             </h1>
             <ul>
-            <li
-                  onClick={handleAllClick}
-                  className="text-[#767676] text-[16px] font-dm py-2 hover:font-bold"
-                >
-                  All
-                </li>
+              <li
+                onClick={handleAllClick}
+                className="text-[#767676] text-[16px] font-dm py-2 hover:font-bold"
+              >
+                All
+              </li>
             </ul>
             {catshow && (
-              <ul className='bg-white shadow-lg p-2 mt-2 cursor-pointer '>
-               
+              <ul className='bg-white shadow-lg p-2 mt-2 cursor-pointer'>
                 {Array.from(new Set(info?.map(item => item.category))).map((cat, i) => (
                   <li
                     key={i}
@@ -95,9 +96,24 @@ const ProductDisplay = () => {
           {/* Products Section */}
           <div className='w-9/12'>
             <div className='flex gap-2 items-start mb-4'>
-              <AiOutlineBars className='text-[20px] hover:bg-black hover:text-white ease-in-out' />
-              <AiOutlineBars className='text-[20px] hover:bg-black hover:text-white ease-in-out' />
-              
+              {/* Toggle View Icons */}
+              <AiOutlineAppstore
+                onClick={() => setActive("grid")}
+                className={`text-[22px] cursor-pointer p-1 rounded ${active === "grid"
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
+                  }`}
+              />
+
+              <AiOutlineBars
+                onClick={() => setActive("list")}
+                className={`text-[22px] cursor-pointer p-1 rounded ${active === "list"
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
+                  }`}
+              />
+
+
               {/* Sort By */}
               <div className='flex relative ml-[200px]'>
                 <h1 className='text-[16px] font-dm text-[#767676]'>Sortby:</h1>
@@ -128,7 +144,7 @@ const ProductDisplay = () => {
 
             {/* Posts */}
             <div className='py-10'>
-              <Post allpage={allpage} />
+              <Post allpage={allpage} view={active} />
             </div>
 
             {/* Pagination */}
